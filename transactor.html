@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APay transactor</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <style>
+        body{
+            background: #262424;
+        }
+    </style>
+    <div class="container">
+        <h2 class="text-center text-white">Tu transacción se ejecutara en el iframe</h2>
+        <p class="text-center text-white">Al lanzar el botón la transacción iniciara, te recomendamos que lances un modal para que el cliente pueda ver la respuesta de la trasacción y si la tarjetqa de credito solicita un código lo pueda ingresar</p>
+
+        <div class="card">
+            <div class="card-body">
+                <iframe src="" class="mt-5" id="ifra" frameborder="0" width="100%" height="300px"></iframe>
+                <br>
+                <br>
+               
+                <div class="text-center">
+                    <button type="button" class="btn btn-primary" onclick="Transaction_demo()">Lanzar transacción demo</button>
+                    
+                    <div id="loader" style="display: none;" class="text-center mt-2">
+                        <div class="spinner-grow text-primary" role="status">
+                            <span class="sr-only"></span>
+                        </div>
+                        <div class="spinner-grow text-primary" role="status">
+                            <span class="sr-only"></span>
+                        </div>
+                        <div class="spinner-grow text-primary" role="status">
+                            <span class="sr-only"></span>
+                        </div>
+                        <div class="spinner-grow text-primary" role="status">
+                            <span class="sr-only"></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <script>
+       function Transaction_demo() {
+         // lanzamos el loader
+         document.getElementById("loader").style.display="block";
+
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+
+        var urlencoded = new URLSearchParams();
+        urlencoded.append("monto", "1");
+        urlencoded.append("card_number", "5100271000000120");
+        urlencoded.append("cvv", "168");
+        urlencoded.append("exp_date", "2501");
+        urlencoded.append("cardholderName", "Jhon Doe");
+        urlencoded.append("token", "xxx");
+        urlencoded.append("ambiente", "0");
+
+        var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: urlencoded,
+        redirect: 'follow'
+        };
+
+        // recuerda que a esta url debes realizar tu post de la información de la tarjeta del cliente
+        
+        fetch("url_apay", requestOptions)
+        .then(response => response.text())
+        .then(result => {
+            let resultado=JSON.parse(result)
+            document.getElementById("ifra").src=resultado.url;
+
+            // recuerda que la API te respondera si el pago es exitoso con 2 y si es incorrecto con 1 
+            // tu debes realizar la acción que necesites al recibir el 2 como quitar el loader
+
+        })
+        .catch(error => console.log('error', error));
+       }
+    </script>
+</body>
+</html>
