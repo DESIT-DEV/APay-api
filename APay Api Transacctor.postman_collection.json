@@ -1,0 +1,98 @@
+{
+	"info": {
+		"_postman_id": "316eba97-a280-4046-9702-8c738bba8a63",
+		"name": "APay Api Transacctor",
+		"description": "Por medio de esta colección podras encontrar la manera de cobrar por medio de tus propios formularios conectandote al motor de pagos de APay",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14765242",
+		"_collection_link": "https://desitsv.postman.co/workspace/cdcc945f-b902-48b6-8d73-5c8a56c3660f/collection/14765242-316eba97-a280-4046-9702-8c738bba8a63?action=share&source=collection_link&creator=14765242"
+	},
+	"item": [
+		{
+			"name": "New Transactor",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "monto",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "card_number",
+							"value": "5100271000000120",
+							"type": "text"
+						},
+						{
+							"key": "cvv",
+							"value": "168",
+							"type": "text"
+						},
+						{
+							"key": "exp_date",
+							"value": "2501",
+							"type": "text"
+						},
+						{
+							"key": "cardholderName",
+							"value": "Jhon Doe",
+							"type": "text"
+						},
+						{
+							"key": "token",
+							"value": "you-token",
+							"type": "text"
+						},
+						{
+							"key": "ambiente",
+							"value": "0",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://aventu-back-end.com/apay-api-transactor/",
+					"protocol": "https",
+					"host": [
+						"aventu-back-end",
+						"com"
+					],
+					"path": [
+						"apay-api-transactor",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "APay-endpoint",
+			"value": "https://aventu-back-end.com/"
+		}
+	]
+}
