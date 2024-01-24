@@ -54,12 +54,12 @@
         myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
         var urlencoded = new URLSearchParams();
-        urlencoded.append("monto", "1");
+        urlencoded.append("monto", "4");
         urlencoded.append("card_number", "5100271000000120");
         urlencoded.append("cvv", "168");
         urlencoded.append("exp_date", "2501");
         urlencoded.append("cardholderName", "Jhon Doe");
-        urlencoded.append("token", "xxx");
+        urlencoded.append("token", "a883884b-e4897-48ed-82fc-b6fe6d4a7b25");
         urlencoded.append("ambiente", "0");
 
         var requestOptions = {
@@ -71,10 +71,12 @@
 
         // recuerda que a esta url debes realizar tu post de la información de la tarjeta del cliente
         
-        fetch("url_apay", requestOptions)
+        fetch("https://aventu-back-end.com/apay-api-transactor/", requestOptions)
         .then(response => response.text())
         .then(result => {
             let resultado=JSON.parse(result)
+            let id=resultado.id
+
             document.getElementById("ifra").src=resultado.url;
 
             // recuerda que la API te respondera si el pago es exitoso con 2 y si es incorrecto con 1 

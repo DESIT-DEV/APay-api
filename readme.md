@@ -101,6 +101,7 @@ En el siguiente ejemplo te mostramos una transacción basica hacia el motor de p
         .then(response => response.text())
         .then(result => {
             let resultado=JSON.parse(result)
+            let id_transaction=resultado.id
             document.getElementById("ifra").src=resultado.url;
 
         })
@@ -112,9 +113,10 @@ Es importante que crees un modal para poder cerrar tu transacción de manera exi
 
 ```sh
 resultado.url
+resultado.id
  document.getElementById("ifra").src=resultado.url;
 ```
 
-nos devuelve la url a colocar en nuestro iframe, recuerda que la respuesta de tu transacción es enviada al endpoint que se te solicita en tu perfil para realizar la actualización del estado de tu transacción.
+nos devuelve la url a colocar en nuestro iframe y el id de la transacción que has inicializado, recuerda que la respuesta de tu transacción es enviada al endpoint que se te solicita en tu perfil para realizar la actualización del estado de tu transacción.
 
 Todas las transacciones quedaran reflejadas en tu cuenta de APay.
