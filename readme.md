@@ -120,3 +120,65 @@ resultado.id
 nos devuelve la url a colocar en nuestro iframe y el id de la transacción que has inicializado, recuerda que la respuesta de tu transacción es enviada al endpoint que se te solicita en tu perfil para realizar la actualización del estado de tu transacción.
 
 Todas las transacciones quedaran reflejadas en tu cuenta de APay.
+
+
+## Errores
+ A continuación se detallan algunos de los errores que pueden ocurrir durante el uso de la API:
+
+### 1. Tarjeta Inválida
+
+**Estatus: 400**
+
+**Descripción:** Este error se produce cuando se proporciona un número de tarjeta inválido.
+
+**Causa:** El número de tarjeta proporcionado no cumple con el formato o la validación requerida.
+
+**Ejemplo de respuesta:**
+```json
+{
+  "msg":"Error: Tarjeta Invalida"
+}
+```
+
+### 2. Fecha de Expiración no Válida
+**Estatus: 400**
+
+**Descripción:** Este error ocurre cuando se proporciona una fecha de expiración que no cumple con los criterios de validez.
+
+**Causa:** La fecha de expiración debe ser proporcionada en el siguiente formato yymm donde primer debe ir el año 25 y luego el mes 01 dando un resultado de 2501, recuerda mostrar en la vista del front-end mmyy pero al enviarlo debes pasarlo a yymm para evitar conflictos
+
+**Ejemplo de respuesta:**
+```json
+{
+ "msg":"Fecha de expiración no valida"
+}
+```
+
+### 3. CVV no Válido
+**Estatus: 400**
+
+**Descripción:** Este error se produce cuando se proporciona un CVV inválido.
+
+**Causa:** El CVV proporcionado no cumple con los requisitos de validez de 3 a 4 digitos.
+
+**Ejemplo de respuesta:**
+```json
+{
+ "msg":"CVV no valido"
+}
+```
+
+### 4. Monto de Tarjeta no Válido
+**Estatus: 400**
+
+**Descripción:** Este error se genera cuando se proporciona un monto a transacciones no válido.
+
+**Causa:** El monto proporcionado no cumple con los requisitos establecidos, este monto debe ser mayor a 1.
+
+**Ejemplo de respuesta:**
+```json
+{
+ "msg":"Monto de tarjeta no valido"
+}
+```
+

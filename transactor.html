@@ -1,90 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>APay transactor</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-</head>
-<body>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
     <style>
-        body{
-            background: #262424;
-        }
+      body {
+        background: #262424;
+      }
     </style>
     <div class="container">
-        <h2 class="text-center text-white">Tu transacción se ejecutara en el iframe</h2>
-        <p class="text-center text-white">Al lanzar el botón la transacción iniciara, te recomendamos que lances un modal para que el cliente pueda ver la respuesta de la trasacción y si la tarjetqa de credito solicita un código lo pueda ingresar</p>
+      <h2 class="text-center text-white">
+        Tu transacción se ejecutara en el iframe
+      </h2>
+      <p class="text-center text-white">
+        Al lanzar el botón la transacción iniciara, te recomendamos que lances
+        un modal para que el cliente pueda ver la respuesta de la trasacción y
+        si la tarjetqa de credito solicita un código lo pueda ingresar
+      </p>
 
-        <div class="card">
-            <div class="card-body">
-                <iframe src="" class="mt-5" id="ifra" frameborder="0" width="100%" height="300px"></iframe>
-                <br>
-                <br>
-               
-                <div class="text-center">
-                    <button type="button" class="btn btn-primary" onclick="Transaction_demo()">Lanzar transacción demo</button>
-                    
-                    <div id="loader" style="display: none;" class="text-center mt-2">
-                        <div class="spinner-grow text-primary" role="status">
-                            <span class="sr-only"></span>
-                        </div>
-                        <div class="spinner-grow text-primary" role="status">
-                            <span class="sr-only"></span>
-                        </div>
-                        <div class="spinner-grow text-primary" role="status">
-                            <span class="sr-only"></span>
-                        </div>
-                        <div class="spinner-grow text-primary" role="status">
-                            <span class="sr-only"></span>
-                        </div>
-                    </div>
-                </div>
+      <div class="card">
+        <div class="card-body">
+          <iframe
+            src=""
+            class="mt-5"
+            id="ifra"
+            frameborder="0"
+            width="100%"
+            height="300px"
+          ></iframe>
+          <br />
+          <br />
 
+          <div class="text-center">
+            <h3 class="" id="estado">Estado:</h3>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="Transaction_demo()"
+            >
+              Lanzar transacción demo
+            </button>
+
+            <div id="loader" style="display: none" class="text-center mt-2">
+              <div class="spinner-grow text-primary" role="status">
+                <span class="sr-only"></span>
+              </div>
+              <div class="spinner-grow text-primary" role="status">
+                <span class="sr-only"></span>
+              </div>
+              <div class="spinner-grow text-primary" role="status">
+                <span class="sr-only"></span>
+              </div>
+              <div class="spinner-grow text-primary" role="status">
+                <span class="sr-only"></span>
+              </div>
             </div>
+          </div>
         </div>
-
+      </div>
     </div>
     <script>
-       function Transaction_demo() {
-         // lanzamos el loader
-         document.getElementById("loader").style.display="block";
+      function Transaction_demo() {
+        // lanzamos el loader
+        const estado = document.getElementById("estado");
+        const loader = document.getElementById("loader");
+        loader.style.display = "block";
 
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
         var urlencoded = new URLSearchParams();
-        urlencoded.append("monto", "4");
-        urlencoded.append("card_number", "5100271000000120");
-        urlencoded.append("cvv", "168");
-        urlencoded.append("exp_date", "2501");
-        urlencoded.append("cardholderName", "Jhon Doe");
-        urlencoded.append("token", "a883884b-e4897-48ed-82fc-b6fe6d4a7b25");
+        urlencoded.append("monto", "1");
+        urlencoded.append("card_number", "xxxxxxxxxxxxxxx");
+        urlencoded.append("cvv", "xxx");
+        urlencoded.append("exp_date", "xxxx");
+        urlencoded.append("cardholderName", "Titular");
+        urlencoded.append("token", "tu-token");
         urlencoded.append("ambiente", "0");
-        urlencoded.append("metodo", 1); /* define si la respuesta sera post o put si es 1 la respuesta sera post si es 0 sera put*/
+        urlencoded.append(
+          "metodo",
+          1
+        ); /* define si la respuesta sera post o put si es 1 la respuesta sera post si es 0 sera put*/
         var requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        body: urlencoded,
-        redirect: 'follow'
+          method: "POST",
+          headers: myHeaders,
+          body: urlencoded,
+          redirect: "follow",
         };
 
         // recuerda que a esta url debes realizar tu post de la información de la tarjeta del cliente
-        
-        fetch("https://aventu-back-end.com/apay-api-transactor/", requestOptions)
-        .then(response => response.text())
-        .then(result => {
-            let resultado=JSON.parse(result)
-            let id=resultado.id
 
-            document.getElementById("ifra").src=resultado.url;
+        fetch(
+          "https://aventu-back-end.com/apay-api-transactor/",
+          requestOptions
+        )
+          .then((response) => response.text())
+          .then((result) => {
+            let resultado = JSON.parse(result);
+            let id = resultado.id;
 
-            // recuerda que la API te respondera si el pago es exitoso con 2 y si es incorrecto con 1 
+            if (resultado.msg == "Error: Tarjeta Invalida") {
+              loader.style.display = "none";
+              estado.innerHTML = "Estado: Tarjeta Invalida";
+            } else if (resultado.msg == "Fecha de expiración no valida") {
+              loader.style.display = "none";
+              estado.innerHTML = "Estado: Fecha de expiración no valida";
+            } else if (resultado.msg == "CVV no valido") {
+              loader.style.display = "none";
+              estado.innerHTML = "Estado: CVV no valido";
+            } else if (resultado.msg == "Monto de tarjeta no valido") {
+              loader.style.display = "none";
+              estado.innerHTML = "Estado: Monto de tarjeta no valido";
+            } else {
+              document.getElementById("ifra").src = resultado.url;
+            }
+
+            // recuerda que la API te respondera si el pago es exitoso con 2 y si es incorrecto con 1
             // tu debes realizar la acción que necesites al recibir el 2 como quitar el loader
-
-        })
-        .catch(error => console.log('error', error));
-       }
+          })
+          .catch((error) => console.log("error", error));
+      }
     </script>
-</body>
+  </body>
 </html>
