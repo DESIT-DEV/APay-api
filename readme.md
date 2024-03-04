@@ -66,7 +66,7 @@ Si tu transación es exitosa recibiras el siguiente mensaje:
 
 En el siguiente ejemplo te mostramos una transacción basica hacia el motor de pago donde deberas enviar la siguiente información:
 
-- monto: monto a pagar
+- monto: monto a pagar **Importante el monto debe ir con 2 dígitos máximo por ejemplo 4.50 si envías 4.505 tendrás un error**
 - card_number: numero de tarjeta de credito
 - cvv: numero de cvv
 - exp_date: fecha de expiración que va de año/mes
