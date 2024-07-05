@@ -121,6 +121,50 @@ nos devuelve la url a colocar en nuestro iframe y el id de la transacción que h
 
 Todas las transacciones quedaran reflejadas en tu cuenta de APay.
 
+## Tokenización
+Puedes resguardar la información de tus clientes en APay para reutilizar la tarjeta en tu app con nuestros tokens. Para tokenizar una tarjeta, debes enviar la siguiente información:
+
+- idBusiness: Tu token.
+- cardHolderName: Nombre del titular de la tarjeta.
+- cardNumber: Número de tarjeta enmascarado (ej. xxxx-xxxx-xxxx-xxxx).
+- expirationDate: Fecha de expiración (yymm, ej. 2501).
+- cvv: CVV de la tarjeta.
+- status: Estado (1 para activo).
+
+```sh
+{
+    "idBusiness": "tu-token",
+    "cardHolderName": "Jhon Doe",
+    "cardNumber": "xxxx-xxxx-xxxx-xxxx",
+    "expirationDate": "2501",
+    "cvv": "123",
+    "status": 1
+}
+
+```
+**IMPORTANTE**: todos los valores debes enviarlos como texto 
+
+**IMPORTANTE**: cardHolderName no puede llevar caracteres especiales
+
+## Suscribción
+Puedes crear una suscripción en APay para tener un pago recurrente en nuestra plataforma. Primero, debes crear una suscripción:
+![enter image description here](https://aventupay.com/assets/img/elements/suscrip2.png)
+
+Una vez creada, tendrás un identificador único que deberás enviar en la creación de tus tarjetas de crédito tokenizadas. Por ejemplo:
+```sh
+{
+    "idBusiness": "tu-token",
+    "idLink": "identificador de suscripción",
+    "cardHolderName": "Jhon Doe",
+    "cardNumber": "xxxx-xxxx-xxxx-xxxx",
+    "expirationDate": "2501",
+    "cvv": "123",
+    "status": 1
+}
+
+
+```
+**idLink** representa el identificador de tu suscripción. Si creas la tarjeta sin este, no tendrá un pago recurrente.
 
 ## Errores
  A continuación se detallan algunos de los errores que pueden ocurrir durante el uso de la API:
