@@ -26,7 +26,7 @@ En el apartado de tu peril en el sector de API tu deberas ingresar el endpoint a
     "IsoResponseCode": "Resultado de tu transacción"
 }
 ```
-**IMPORTANTE**: `IsoResponseCode` te mostrara un código resultante de tu transacción, estos reflejaran si fue exitosa o si tuvo algun tipo de problema la transacción realizada.
+**IMPORTANTE**: `IsoResponseCode` te mostrara un código resultante de tu transacción, estos reflejaran si fue exitosa o si tuvo algun tipo de problema la transacción realizada. Puedes consultarlos en  [APay Docs](https://aventupay.com/docs/C%C3%B3digos%20de%20error.pdf)
 
 ## APay Links
 
