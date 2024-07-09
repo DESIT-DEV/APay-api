@@ -142,6 +142,9 @@ Puedes resguardar la información de tus clientes en APay para reutilizar la tar
 }
 
 ```
+
+**IMPORTANTE**: No puedes lanzar un cobro si tu tarjeta no ha sido previamente guardada, primero deberás usar Transactor APay para poder lanzar la primera transacción del tarjetahabiente y posterior guardar la tarjeta para que las siguientes transacciones ya las puedas usar con la tarjeta guardada en tokenización.
+
 **IMPORTANTE**: todos los valores debes enviarlos como texto 
 
 **IMPORTANTE**: cardHolderName no puede llevar caracteres especiales
