@@ -22,9 +22,11 @@ En el apartado de tu peril en el sector de API tu deberas ingresar el endpoint a
 ```sh
 {
     "link":"id_transacción",
-    "status":"si la transacción fue exitosa 2 o 1 si fue denegada"
+    "status":"si la transacción fue exitosa 2 o 1 si fue denegada",
+    "IsoResponseCode": "Resultado de tu transacción"
 }
 ```
+**IMPORTANTE**: `IsoResponseCode` te mostrara un código resultante de tu transacción, estos reflejaran si fue exitosa o si tuvo algun tipo de problema la transacción realizada.
 
 ## APay Links
 
@@ -60,7 +62,6 @@ Si tu transación es exitosa recibiras el siguiente mensaje:
     id_publico:"id del link creado"
 }
 ```
-
 
 ## Transactor APay
 
