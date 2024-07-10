@@ -170,6 +170,15 @@ Una vez creada, tendrás un identificador único que deberás enviar en la creac
 ```
 **idLink** representa el identificador de tu suscripción. Si creas la tarjeta sin este, no tendrá un pago recurrente.
 
+## Recibos
+
+Puedes obtener la URL de cada transacción y compartirla con tus clientes. Esta URL será amigable y detallará el contenido que se le cobró al cliente.
+
+```sh  
+    https://aventupay.com/ticket/"idlink"
+```
+
+
 ## Errores
  A continuación se detallan algunos de los errores que pueden ocurrir durante el uso de la API:
 
